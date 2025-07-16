@@ -1,0 +1,141 @@
+
+
+:root {
+  --white: hsl(0, 0%, 100%);
+
+  --stone-100: hsl(30, 54%, 90%);
+  --stone-150: hsl(30, 18%, 87%);
+  --stone-600: hsl(30, 10%, 34%);
+  --stone-900: hsl(24, 5%, 18%);
+
+  --brown-800: hsl(14, 45%, 36%);
+
+  --rose-800: hsl(332, 51%, 32%);
+  --rose-50: hsl(330, 100%, 98%);
+}
+
+body { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.hero-image img{ 
+  width: 100%;
+  max-width: 650px;
+}
+
+.title-and-description { 
+  padding: 25px;
+  
+}
+
+.title-and-description h1,h2{ 
+  font-family: Young serif; 
+}
+
+.title-and-description h1 { 
+  font-size: 1.8rem;
+  color: var(--stone-900);
+}
+
+.title-and-description > p { 
+  padding-bottom: 28px;
+  color: var(--stone-600);
+  line-height: 1.6;
+}
+
+.title-and-description  p,h3, ul,table { 
+  font-family: Outfit;
+}
+
+.praparation-time { 
+  background-color: var(--rose-50);
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.praparation-time h3 { 
+  color: var(--rose-800);
+}
+
+.praparation-time span {
+  font-weight: bold;
+}
+
+.praparation-time ul li { 
+  padding: 8px;
+  color: var(--stone-600);
+}
+
+.ingredients h2 { 
+  color: var(--brown-800);
+}
+
+.ingredients ul li{
+  padding: 8px;
+  color: var(--stone-600);
+}
+
+.instructions h2 { 
+  color: var(--brown-800);
+}
+
+.instructions > ol >li > p > span {
+  font-weight: bold;
+  
+}
+
+.instructions ol li {
+  color: var(--stone-600);
+}
+
+.nutrition h2 { 
+  color: var(--brown-800);
+}
+
+.nutrition p {
+  color: var(--stone-600);
+}
+
+.nutrition table { 
+  width: 100%;
+  margin: auto;
+  
+}
+
+.nutrition td { 
+  padding: 15px;
+  color: var(--stone-600);
+  border-bottom: 1px solid var(--stone-150);
+}
+
+.nutrition td > span { 
+  font-weight: bold;
+  color: var(--brown-800);
+}
+
+@media (min-width:650px){
+  body{
+    background-color: var(--stone-150);
+  }
+  .global-container {
+    background-color: #fff;
+    max-width: 850px;
+    margin: auto;
+    margin-top: 130px;
+    padding: 35px;
+    border-radius: 16px;
+  }
+
+  .hero-image img{ 
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    border-radius: 16px;
+  
+
+  }
+}
