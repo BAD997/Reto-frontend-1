@@ -1,141 +1,185 @@
-
-
+/* --- VARIABLES --- */
 :root {
   --white: hsl(0, 0%, 100%);
-
   --stone-100: hsl(30, 54%, 90%);
   --stone-150: hsl(30, 18%, 87%);
   --stone-600: hsl(30, 10%, 34%);
   --stone-900: hsl(24, 5%, 18%);
-
   --brown-800: hsl(14, 45%, 36%);
-
   --rose-800: hsl(332, 51%, 32%);
   --rose-50: hsl(330, 100%, 98%);
 }
 
-body { 
+/* --- RESET MODERNO Y ESTILOS GLOBALES --- */
+/*
+  MEJORA: Se implementa un reset de CSS más completo.
+  RAZÓN: 
+  1. `box-sizing: border-box` unifica el modelo de caja, haciendo los layouts más predecibles.
+  2. `margin: 0` y `padding: 0` eliminan los estilos por defecto de los navegadores.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-
-
-.hero-image img{ 
-  width: 100%;
-  max-width: 650px;
-}
-
-.title-and-description { 
-  padding: 25px;
-  
-}
-
-.title-and-description h1,h2{ 
-  font-family: Young serif; 
-}
-
-.title-and-description h1 { 
-  font-size: 1.8rem;
-  color: var(--stone-900);
-}
-
-.title-and-description > p { 
-  padding-bottom: 28px;
+body {
+  font-family: 'Outfit', sans-serif;
   color: var(--stone-600);
   line-height: 1.6;
+  background-color: var(--white);
 }
 
-.title-and-description  p,h3, ul,table { 
-  font-family: Outfit;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-.praparation-time { 
-  background-color: var(--rose-50);
-  padding: 12px;
-  border-radius: 16px;
-}
+/* --- ESTILOS DE COMPONENTES --- */
 
-.praparation-time h3 { 
-  color: var(--rose-800);
-}
-
-.praparation-time span {
-  font-weight: bold;
-}
-
-.praparation-time ul li { 
-  padding: 8px;
-  color: var(--stone-600);
-}
-
-.ingredients h2 { 
-  color: var(--brown-800);
-}
-
-.ingredients ul li{
-  padding: 8px;
-  color: var(--stone-600);
-}
-
-.instructions h2 { 
-  color: var(--brown-800);
-}
-
-.instructions > ol >li > p > span {
-  font-weight: bold;
-  
-}
-
-.instructions ol li {
-  color: var(--stone-600);
-}
-
-.nutrition h2 { 
-  color: var(--brown-800);
-}
-
-.nutrition p {
-  color: var(--stone-600);
-}
-
-.nutrition table { 
+.recipe-card {
   width: 100%;
-  margin: auto;
-  
 }
 
-.nutrition td { 
-  padding: 15px;
-  color: var(--stone-600);
-  border-bottom: 1px solid var(--stone-150);
+.hero-image img {
+  width: 100%;
 }
 
-.nutrition td > span { 
-  font-weight: bold;
+.recipe-intro,
+.preparation-time,
+.ingredients,
+.instructions,
+.nutrition {
+  padding: 1.75rem;
+}
+
+/* Eliminar el padding superior del primer elemento y el inferior del último para un mejor espaciado */
+.recipe-header + * {
+    padding-top: 0;
+}
+
+.recipe-card > *:last-child {
+    padding-bottom: 1.75rem;
+}
+
+
+h1, .section-title {
+  font-family: 'Young Serif', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--stone-900);
+  margin-bottom: 1rem;
+}
+
+/*
+  MEJORA: Se crea una clase de utilidad para los títulos de sección.
+  RAZÓN: Se aplica el principio DRY (Don't Repeat Yourself). En lugar de repetir 
+  el estilo para cada h2, se define una vez y se aplica mediante una clase en el HTML.
+*/
+.section-title {
   color: var(--brown-800);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
 }
 
-@media (min-width:650px){
-  body{
-    background-color: var(--stone-150);
-  }
-  .global-container {
-    background-color: #fff;
-    max-width: 850px;
-    margin: auto;
-    margin-top: 130px;
-    padding: 35px;
-    border-radius: 16px;
+.preparation-time {
+  background-color: var(--rose-50);
+  border-radius: 12px;
+  margin: 0 1.75rem 1.75rem;
+  padding: 1.5rem;
+}
+
+.preparation-time h3 {
+  color: var(--rose-800);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/*
+  MEJORA: Se simplifican los selectores de lista.
+  RAZÓN: Se evita la sobre-especificidad. Estos selectores son más robustos y 
+  no se romperán si la estructura del HTML cambia ligeramente.
+*/
+ul, ol {
+  padding-left: 1.25rem;
+}
+
+li {
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+li::marker {
+  color: var(--brown-800);
+  font-weight: bold;
+}
+
+.nutrition table {
+  width: 100%;
+  border-collapse: collapse; /* Une los bordes de las celdas */
+  margin-top: 1rem;
+}
+
+.nutrition th, .nutrition td {
+  border-bottom: 1px solid var(--stone-150);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+/* El último elemento no necesita borde */
+.nutrition tr:last-child th,
+.nutrition tr:last-child td {
+  border-bottom: none;
+}
+
+.nutrition th {
+  font-weight: 400; /* Quita la negrita por defecto del navegador */
+}
+
+.nutrition td {
+  color: var(--brown-800);
+  font-weight: 700;
+}
+
+
+/* --- MEDIA QUERY PARA ESCRITORIO --- */
+@media (min-width: 768px) {
+  body {
+    background-color: var(--stone-100);
+    padding: 4rem 0; /* Espacio vertical para centrar la tarjeta */
   }
 
-  .hero-image img{ 
-    width: 100%;
-    max-width: 850px;
+  .recipe-card {
+    max-width: 750px;
     margin: auto;
-    border-radius: 16px;
+    background-color: var(--white);
+    border-radius: 24px;
+    padding: 2.5rem;
+    padding-top: 2.5rem; /* Ajuste para el padding interno */
+  }
   
+  .hero-image img {
+    border-radius: 12px;
+  }
 
+  .recipe-intro,
+  .preparation-time,
+  .ingredients,
+  .instructions,
+  .nutrition {
+    padding: 30px;
+    margin-bottom: 2rem;
+  }
+  
+  .recipe-header {
+      margin-bottom: 2rem;
   }
 }
+
