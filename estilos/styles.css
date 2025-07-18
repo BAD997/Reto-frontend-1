@@ -102,6 +102,13 @@ h1 {
   margin-bottom: 0.75rem;
 }
 
+hr { 
+  background-color: var(--rose-800);
+  height: 1px;
+  border: none;
+  margin: 1.5rem 0;
+}
+
 /*
   MEJORA: Se simplifican los selectores de lista.
   RAZÓN: Se evita la sobre-especificidad. Estos selectores son más robustos y 
